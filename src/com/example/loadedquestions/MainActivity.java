@@ -19,6 +19,19 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
+	//Create an array full of questions
+    final String[] myQuestions = {
+    		"What is your morning routine like?",
+    		"If you could travel anywhere, where would it be?",
+    		"What is your favorite dessert?",
+    		"What was the worst mood you were in today?",
+    		"When is your ideal time to take a nap?",
+    		"Is there anywhere else you'd rather be right now? If yes, then where?",
+    		"Who do you regret meeting most in life?",
+    		"What is your super power?",
+    		"What is the most painful thing that ever happened to you, emotionally or physically?"
+    };	
+	
 	
 	
 	
@@ -26,6 +39,7 @@ public class MainActivity extends Activity {
 	Button mButton1;
 	Button mButton2;
 	Button mButton3;
+	Button mButton4;
 	EditText mEditText1;
 	EditText mEditText2;
 	TextView mText;
@@ -34,8 +48,8 @@ public class MainActivity extends Activity {
 	String[] playerNames;
 	*/
 	
-	public void makeFirstVisible(){
-		
+	
+	public void makeAllInvisible(){
 		mText = (TextView)findViewById(R.id.textView1);
 		mText.setVisibility(View.INVISIBLE);
 		
@@ -48,7 +62,44 @@ public class MainActivity extends Activity {
 		mEditText2 = (EditText)findViewById(R.id.editText2);
 		mEditText2.setVisibility(View.INVISIBLE);
 		
+		mText = (TextView)findViewById(R.id.textView3);
+		mText.setVisibility(View.INVISIBLE);
+		
+		mText = (TextView)findViewById(R.id.textView4);
+		mText.setVisibility(View.INVISIBLE);
+		
+		mText = (TextView)findViewById(R.id.textView5);
+		mText.setVisibility(View.INVISIBLE);
+		
+		mText = (TextView)findViewById(R.id.textView6);
+		mText.setVisibility(View.INVISIBLE);
+		
+		mEditText1 = (EditText)findViewById(R.id.editText3);
+		mEditText1.setVisibility(View.INVISIBLE);
+		
+		mButton4 = (Button)findViewById(R.id.button4);
+		mButton4.setVisibility(View.INVISIBLE);
+		
+		
+		
 	}
+	public void makeFirstVisible(){
+		
+		mText = (TextView)findViewById(R.id.textView1);
+		mText.setVisibility(View.VISIBLE);
+		
+		mText = (TextView)findViewById(R.id.textView2);
+		mText.setVisibility(View.VISIBLE);
+		
+		mEditText1 = (EditText)findViewById(R.id.editText1);
+		mEditText1.setVisibility(View.VISIBLE);
+		
+		mEditText2 = (EditText)findViewById(R.id.editText2);
+		mEditText2.setVisibility(View.VISIBLE);
+		
+	}
+	
+	
 	
 	
 	
@@ -63,6 +114,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
      // Set OnClickListner to the login button 
         //mkae vsible
+      makeAllInvisible();
       makeFirstVisible();
         mButton2 = (Button)findViewById(R.id.button2);
         mButton3 = (Button)findViewById(R.id.button3);
@@ -121,7 +173,12 @@ public class MainActivity extends Activity {
         		mEditText2 = (EditText)findViewById(R.id.editText2);
         		mEditText2.setVisibility(View.INVISIBLE);
         		
-        		
+        		//Randomly generates one element out of the nine of the string each time button is pressed
+        		mText = (TextView)findViewById(R.id.textView3);
+        		int rando = (int) (Math.random() * 9);
+				mText.setText(myQuestions[rando]);
+				
+			
 				
         		
         		
