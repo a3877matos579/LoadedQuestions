@@ -25,7 +25,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
+        public static final int action_settings=0x7f09000e;
         public static final int button1=0x7f090008;
         public static final int button2=0x7f090009;
         public static final int button3=0x7f09000a;
@@ -33,22 +33,29 @@ public final class R {
         public static final int button5=0x7f090006;
         public static final int editText1=0x7f090004;
         public static final int editText2=0x7f090007;
+        public static final int editText3=0x7f09000d;
         public static final int textView1=0x7f090000;
         public static final int textView2=0x7f090001;
         public static final int textView3=0x7f090002;
         public static final int textView4=0x7f090005;
+        public static final int textView5=0x7f09000b;
+        public static final int textView6=0x7f09000c;
     }
     public static final class layout {
         public static final int activity_activity2=0x7f030000;
         public static final int activity_activity3=0x7f030001;
         public static final int activity_activity4=0x7f030002;
-        public static final int activity_main=0x7f030003;
+        public static final int activity_activity5=0x7f030003;
+        public static final int activity_activity__final=0x7f030004;
+        public static final int activity_main=0x7f030005;
     }
     public static final class menu {
         public static final int activity2=0x7f080000;
         public static final int activity3=0x7f080001;
         public static final int activity4=0x7f080002;
-        public static final int main=0x7f080003;
+        public static final int activity5=0x7f080003;
+        public static final int activity__final=0x7f080004;
+        public static final int main=0x7f080005;
     }
     public static final class raw {
         public static final int questions=0x7f040000;
@@ -60,6 +67,8 @@ public final class R {
         public static final int title_activity_activity2=0x7f060003;
         public static final int title_activity_activity3=0x7f060004;
         public static final int title_activity_activity4=0x7f060005;
+        public static final int title_activity_activity5=0x7f060006;
+        public static final int title_activity_activity__final=0x7f060007;
     }
     public static final class style {
         /** 

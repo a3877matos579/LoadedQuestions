@@ -38,6 +38,10 @@
             android:name=".Activity5"
             android:label="@string/title_activity_activity5" >
         </activity>
+        <activity
+            android:name=".Activity_Final"
+            android:label="@string/title_activity_activity__final" >
+        </activity>
     </application>
 
 </manifest>
