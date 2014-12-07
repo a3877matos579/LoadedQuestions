@@ -3,7 +3,6 @@ package com.example.loadedquestions;
 
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,19 +49,43 @@ public class MainActivity extends Activity {
 		
 	}
 	
+	//Create an array full of questions
+    final String[] myQuestions = {
+    		"What is your morning routine like?",
+    		"If you could travel anywhere, where would it be?",
+    		"What is your favorite dessert?",
+    		"What was the worst mood you were in today?",
+    		"When is your ideal time to take a nap?",
+    		"Is there anywhere else you'd rather be right now? If yes, then where?",
+    		"Who do you regret meeting most in life?",
+    		"What is your super power?",
+    		"What is the most painful thing that ever happened to you, emotionally or physically?"
+    };	
 	
-	
-	
-	
-	
-	
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
      // Set OnClickListner to the login button 
         //mkae vsible
+        
+        final TextView textOne = (TextView) findViewById(R.id.textView3);
+        final TextView textTwo = (TextView) findViewById(R.id.textView4);
+        Button pushMe = (Button) findViewById(R.id.button1);
+        
+        //When button clicked, randomly pull an element from array 
+        pushMe.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				//Randomly generates one element out of the nine of the string each time button is pressed
+				int rando = (int) (Math.random() * 9);
+				textOne.setText(myQuestions[rando]);
+				textTwo.setText("The Question Is...");
+			}
+		});
+    	
       makeFirstVisible();
         mButton2 = (Button)findViewById(R.id.button2);
         mButton3 = (Button)findViewById(R.id.button3);
