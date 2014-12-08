@@ -19,6 +19,14 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
+	int numPlayers;
+	int numRounds;
+	int state;
+	int turn = 0;
+	String[] answers;
+	
+	
+	
 	//Create an array full of questions
     final String[] myQuestions = {
     		"What is your morning routine like?",
@@ -32,21 +40,29 @@ public class MainActivity extends Activity {
     		"What is the most painful thing that ever happened to you, emotionally or physically?"
     };	
 	
-	
-	
+    private String[] toppings;{
+    	toppings = new String[20];
+    	toppings[0] = "Cheese";
+    	}
 	
 	protected static final String[][] String = null;
 	Button mButton1;
 	Button mButton2;
 	Button mButton3;
 	Button mButton4;
+	Button mButton5;
 	EditText mEditText1;
 	EditText mEditText2;
+	EditText mEditText3;
 	TextView mText;
 	//implementing usernames
 	/*
 	String[] playerNames;
 	*/
+	
+	
+	
+	
 	
 	
 	public void makeAllInvisible(){
@@ -62,6 +78,9 @@ public class MainActivity extends Activity {
 		mEditText2 = (EditText)findViewById(R.id.editText2);
 		mEditText2.setVisibility(View.INVISIBLE);
 		
+		mEditText3 = (EditText)findViewById(R.id.editText3);
+		mEditText3.setVisibility(View.INVISIBLE);
+		
 		mText = (TextView)findViewById(R.id.textView3);
 		mText.setVisibility(View.INVISIBLE);
 		
@@ -73,9 +92,15 @@ public class MainActivity extends Activity {
 		
 		mText = (TextView)findViewById(R.id.textView6);
 		mText.setVisibility(View.INVISIBLE);
+	
+		mButton1 = (Button)findViewById(R.id.button1);
+		mButton1.setVisibility(View.INVISIBLE);
 		
-		mEditText1 = (EditText)findViewById(R.id.editText3);
-		mEditText1.setVisibility(View.INVISIBLE);
+		mButton2 = (Button)findViewById(R.id.button2);
+		mButton2.setVisibility(View.INVISIBLE);
+		
+		mButton3 = (Button)findViewById(R.id.button3);
+		mButton3.setVisibility(View.INVISIBLE);
 		
 		mButton4 = (Button)findViewById(R.id.button4);
 		mButton4.setVisibility(View.INVISIBLE);
@@ -84,6 +109,8 @@ public class MainActivity extends Activity {
 		
 	}
 	public void makeFirstVisible(){
+		
+		state = 1;
 		
 		mText = (TextView)findViewById(R.id.textView1);
 		mText.setVisibility(View.VISIBLE);
@@ -96,6 +123,46 @@ public class MainActivity extends Activity {
 		
 		mEditText2 = (EditText)findViewById(R.id.editText2);
 		mEditText2.setVisibility(View.VISIBLE);
+		
+		mButton1 = (Button)findViewById(R.id.button1);
+		mButton1.setVisibility(View.VISIBLE);
+		
+		mButton2 = (Button)findViewById(R.id.button2);
+		mButton2.setVisibility(View.VISIBLE);
+		
+		mButton3 = (Button)findViewById(R.id.button3);
+		mButton3.setVisibility(View.VISIBLE);
+		
+	}
+	
+	public void makeSecondVisible(){
+		
+		state = 2;
+		
+		mText = (TextView)findViewById(R.id.textView3);
+		mText.setVisibility(View.VISIBLE);
+		
+		mText = (TextView)findViewById(R.id.textView4);
+		mText.setVisibility(View.VISIBLE);
+		
+		mText = (TextView)findViewById(R.id.textView5);
+		mText.setVisibility(View.VISIBLE);
+		
+		mText = (TextView)findViewById(R.id.textView6);
+		mText.setVisibility(View.VISIBLE);
+		
+		mEditText3 = (EditText)findViewById(R.id.editText3);
+		mEditText3.setVisibility(View.VISIBLE);
+		
+		mButton4 = (Button)findViewById(R.id.button4);
+		mButton4.setVisibility(View.VISIBLE);
+		
+		
+		
+	}
+	
+	public void makeThirdVisible(){
+		
 		
 	}
 	
@@ -113,9 +180,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
      // Set OnClickListner to the login button 
-        //mkae vsible
+        //make visible
       makeAllInvisible();
       makeFirstVisible();
+      
+      
+      
+        mButton1 = (Button)findViewById(R.id.button1);
         mButton2 = (Button)findViewById(R.id.button2);
         mButton3 = (Button)findViewById(R.id.button3);
         
@@ -124,20 +195,32 @@ public class MainActivity extends Activity {
         
         mButton2.setOnClickListener(new View.OnClickListener(){
         	public void onClick(View view){
+        		
+        		
         		//player names
         		
         	
         		
         		
-        		mEditText1 = (EditText)findViewById(R.id.editText1);
-        		mText = (TextView)findViewById(R.id.textView1);
-        		     		
-        		/*int test = Integer.parseInt(mEditText1.getText().toString());*/
         		
-        		/*mText.setText("There are "+test+" players!");*/
+        		
+        		
+        		
+        		mEditText1 = (EditText)findViewById(R.id.editText1);
+        		
+        		mText = (TextView)findViewById(R.id.textView5);
+        		     		
+        		numPlayers = Integer.parseInt(mEditText1.getText().toString());
+        		
+        		
+        		mText.setText("Player "+(turn + 1)+" ");
         		
         		mText = (TextView)findViewById(R.id.textView1);
         		mText.setText("There are "+mEditText1.getText().toString()+" players!");
+        		
+        		answers = new String[numPlayers];
+        		
+        		
       
         		
         		/*getPreferences(test);
@@ -148,33 +231,68 @@ public class MainActivity extends Activity {
         
         mButton3.setOnClickListener(new View.OnClickListener(){
         	public void onClick(View view){
+       	
         		mEditText2 = (EditText)findViewById(R.id.editText2);
+        		mText = (TextView)findViewById(R.id.textView6);
+        		numRounds = Integer.parseInt(mEditText2.getText().toString());
         		mText = (TextView)findViewById(R.id.textView2);
+        		mText.setText("Round "+numRounds+" ");
+
         		
-        		mText.setText("There will be "+mEditText2.getText().toString()+" rounds!");
+        		
+      
         	}
         });
         
-        final Button button1 = (Button) findViewById(R.id.button1);
+        mButton4.setOnClickListener(new View.OnClickListener(){
+        	public void onClick(View view){
+        		
+        		
+        		mEditText3 = (EditText)findViewById(R.id.editText3);
+        		answers[turn] = mEditText3.getText().toString();
+        		
+        		turn++;
+        		
+        		mText = (TextView)findViewById(R.id.textView5); 
+        		mText.setText("Player "+(turn + 1)+" ");
+        		
+        		mEditText3.setText("");
+        		
+        		if(turn == numPlayers){
+        			makeAllInvisible();
+        			makeThirdVisible();
+        		}
+        		
+        		
+        		
+        		
+        		
+        		
+        		
+        		 
+        		
+        		
+        		
+        		
+        		
+        	}
+        });
         
-        button1.setOnClickListener(new View.OnClickListener() {
+        mButton1.setOnClickListener(new View.OnClickListener() {
 			
 			
 			public void onClick(View v) {
-				mText = (TextView)findViewById(R.id.textView1);
-				mText.setVisibility(View.INVISIBLE);
 				
-				mText = (TextView)findViewById(R.id.textView2);
-        		mText.setVisibility(View.INVISIBLE);
+				
         		
-        		mEditText1 = (EditText)findViewById(R.id.editText1);
-        		mEditText1.setVisibility(View.INVISIBLE);
-        		
-        		mEditText2 = (EditText)findViewById(R.id.editText2);
-        		mEditText2.setVisibility(View.INVISIBLE);
-        		
-        		//Randomly generates one element out of the nine of the string each time button is pressed
-        		mText = (TextView)findViewById(R.id.textView3);
+				makeAllInvisible();
+			    makeSecondVisible();
+				
+				
+					//makeSecondVisible(i);
+				 
+				//Randomly generates one element out of the nine of the string each time button is pressed
+				mText = (TextView)findViewById(R.id.textView3);
         		int rando = (int) (Math.random() * 9);
 				mText.setText(myQuestions[rando]);
 				
