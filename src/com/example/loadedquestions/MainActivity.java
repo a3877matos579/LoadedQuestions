@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 	boolean allDone = false;
 	Integer[] ranOrder; 
 	
-	//Create an array full of questions
+	//Create an array full of question
     final String[] myQuestions = {
     		"What is your morning routine like?",
     		"If you could travel anywhere, where would it be?",
@@ -210,7 +210,8 @@ public class MainActivity extends Activity {
 		
 	}
 	
-	public void makeFourthVisible(){
+	
+public void makeFourthVisible(){
 		
 		mButton6 = (Button)findViewById(R.id.button6);
 		mButton6.setVisibility(View.VISIBLE);
@@ -222,6 +223,11 @@ public class MainActivity extends Activity {
 		mText.setVisibility(View.VISIBLE);
 		
 	}
+public void dum() {
+	int randomness = (int) (Math.random() * 9);
+	mText.setText(myQuestions[randomness]);
+	}
+
 	public boolean isUsed(int in){
 	
 	for(int x = 0; x < numPlayers; x++)
@@ -462,6 +468,8 @@ public class MainActivity extends Activity {
 	
 	
 	
+	
+	
 	mButton6.setOnClickListener(new View.OnClickListener(){
     	public void onClick(View view){
     		if(guesser < numPlayers)
@@ -480,6 +488,13 @@ public class MainActivity extends Activity {
     		
     		mText = (TextView)findViewById(R.id.textView5);
     		mText.setText("Player "+(turn + 1)+" ");
+    		
+    		
+    		
+    		mText = (TextView)findViewById(R.id.textView3);
+    		dum();
+    		
+    		
   
     		
     		
