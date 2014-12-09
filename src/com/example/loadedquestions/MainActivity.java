@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
 	int[] prvAns; 
 	int rando;
 	int i;
+	int x = 0;
 	boolean redo = true;
 	boolean allDone = false;
 	Integer[] ranOrder; 
@@ -331,10 +332,11 @@ public class MainActivity extends Activity {
         				
         		}
         		ranOrder = new Integer[numPlayers - 1];
-        		for(int i = 0 ;i < (numPlayers - 1) ; i++)
+        		for(int i = 0 ;i < (numPlayers) ; i++)
         		{
         			if(i != guesser){
-        			ranOrder[i] = i;}
+        			ranOrder[x] = i;
+        			x++;}
         		}
         		Collections.shuffle(Arrays.asList(ranOrder));
       
@@ -373,32 +375,32 @@ public class MainActivity extends Activity {
         		answers[turn] = mEditText3.getText().toString();
         		
         		turn++;
-        		
+        		if(guesser == turn){
+        			turn++;
+        			mText = (TextView)findViewById(R.id.textView5); 
+        			mText.setText("Player "+(turn + 1)+" ");}
         		mText = (TextView)findViewById(R.id.textView5); 
         		mText.setText("Player "+(turn + 1)+" ");
         		
         		mEditText3.setText("");
-        		}
-        		else{
+        		
+        		/*if(guesser == turn){
         			turn++;
         			mText = (TextView)findViewById(R.id.textView5); 
         			mText.setText("Player "+(turn + 1)+" ");
-        			
+        		}*/
         			
         		}
         		
         		if(turn == numPlayers){
         			makeAllInvisible();
         			makeThirdVisible();
-        			rando = (int) (Math.random() * numPlayers);
+        			mEditText4.setText("");
         			mText = (TextView)findViewById(R.id.textView8);
         			i = 0;
         			mText.setText(answers[ranOrder[i]]);
         			
-        			//prvAns[i] = rando;
-        			//isRead[rando] = true;
-        			//i++;
-        			
+        	
         			
         		}
         		
@@ -413,7 +415,7 @@ public class MainActivity extends Activity {
     	public void onClick(View view){
     		
     		mEditText4 = (EditText)findViewById(R.id.editText4);
-    		if(i != (numPlayers - 1)){
+    		if(i != (numPlayers - 2)){
     		int temp =( Integer.parseInt(mEditText4.getText().toString()) - 1); 	
     		if(temp == ranOrder[i])
     			Score[guesser] = Score[guesser] + 1;
@@ -462,19 +464,24 @@ public class MainActivity extends Activity {
 	
 	mButton6.setOnClickListener(new View.OnClickListener(){
     	public void onClick(View view){
-    		
+    		if(guesser < numPlayers)
+    		{
+    			guesser = 0;
+    			mText = (TextView)findViewById(R.id.textView6);
+        		mText.setText("Round "+(rounds + 1)+" ");
+        		
+    		}
     		//if(rounds > numRounds)
 			//display winner
     		guesser++;
-    		
+    		turn = 0;
     		makeAllInvisible();
     		makeSecondVisible();
     		
     		mText = (TextView)findViewById(R.id.textView5);
     		mText.setText("Player "+(turn + 1)+" ");
   
-    		mText = (TextView)findViewById(R.id.textView6);
-    		mText.setText("Round "+(rounds + 1)+" ");
+    		
     		
     		
     		
